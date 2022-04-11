@@ -24,6 +24,7 @@ int main(){
             }
         }
         //Solution
+        
         while(input.size()>0){
 
             itr = input.begin();
