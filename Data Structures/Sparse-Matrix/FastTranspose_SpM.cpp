@@ -6,7 +6,7 @@ class spm
     int r,c,v;
 public:
     void read(spm a[],int m,int n);
-    void fast_transpose(spm a[],spm b[],int m,int n);
+    void fast_transpose(spm a[],spm b[]);
 };
 void spm::read(spm a[],int m,int n)
 {
@@ -32,19 +32,23 @@ void spm::read(spm a[],int m,int n)
     for(int i=0;i<=a[0].v;i++)
         cout<<a[i].r<<' '<<a[i].c<<' '<<a[i].v<<endl;
 }
-void spm::fast_transpose(spm a[],spm b[],int m,int n)
+void spm::fast_transpose(spm a[],spm b[])
 {
     int k=1,i,rT[Max],sp[Max];
     b[0].r=a[0].c;
     b[0].c=a[0].r;
     b[0].v=a[0].v;
+    //initializing to 0
     for(i=0;i<a[0].c;i++)
         rT[i]=0;
+    //counting the number of non-zero elements in each column
     for(i=1;i<a[0].v;i++)
         rT[a[i].c]++;
     sp[0]=1;
+    //finding the starting position of each column
     for(i=1;i<a[0].c;i++)
         sp[i]=sp[i-1]+rT[i-1];
+    
     for(i=1;i<=a[0].v;i++)
     {
         k=sp[a[i].c]++;
@@ -58,10 +62,10 @@ void spm::fast_transpose(spm a[],spm b[],int m,int n)
 }
 int main()
 {
-    int m,n,k=0;
+    int m,n;
     cout<<"Enter Dimensions of the Matrix\n";
     cin>>m>>n;
     spm a[Max],b[Max],a1;
     a1.read(a,m,n);
-    a1.fast_transpose(a,b,m,n);
+    a1.fast_transpose(a,b);
 }
