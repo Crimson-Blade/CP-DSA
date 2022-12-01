@@ -72,4 +72,6 @@ class circular_queue {
 };
 class polynomial{
     circular_queue poly;
+    int n;
+    cin>>"En"
 }
