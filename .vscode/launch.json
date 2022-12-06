@@ -5,6 +5,27 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "Launch d1q1",
+      "request": "launch",
+      "mainClass": "d1q1",
+      "projectName": "CP-DSA_ea3545db"
+    },
+    {
+      "type": "java",
+      "name": "Launch q1",
+      "request": "launch",
+      "mainClass": "q1",
+      "projectName": "CP-DSA_ea3545db"
+    },
+    {
+      "type": "java",
+      "name": "Launch q1",
+      "request": "launch",
+      "mainClass": "AdventOfCode.q1",
+      "projectName": "CP-DSA_ea3545db"
+    },
+    {
       "name": "g++ - Build and debug active file",
       "type": "cppdbg",
       "request": "launch",
