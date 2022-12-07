@@ -1,10 +1,11 @@
 const fs = require('fs');
 const file = fs.readFileSync("./input.txt", 'utf8');
-const [stackStr, instructions] = file.split('\n\n');
-const stackArr = stackStr.split('\n');
-stackArr.pop();
-let stacks = [[]];
-for (line of stackArr){
-    for(let i=1;i<line.length;i+=4)
-        stacks[parseInt(i/4)].push(line[i])
+const len = 14; // 4 for part 1
+for(let i=0;i<file.length-len;i++){
+    let sub = file.substring(i,i+len);
+    let set = new Set(sub);
+    if(set.size==len){
+        console.log(i+len);
+        break;
+    }
 }
