@@ -85,7 +85,7 @@ class stack{
             }
             int x = q1.peek();
             q1.dequeue();
-            q2.enqueue(x);
+            q2.enqueue(x); //if top, else remove line for pop
             queue temp = q1;
             q1 = q2;
             q2 = temp;
