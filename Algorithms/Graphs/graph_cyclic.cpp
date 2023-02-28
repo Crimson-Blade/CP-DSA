@@ -22,25 +22,8 @@ public:
     adjLists[src].push_front(dest);
     // adjLists[dest].push_front(src); for non directed
   }
-  // dfs - recursive
-  void DFS_R(int startVertex)
-  {
-    bool *visited = new bool[numOfVerticies];
-    visited[startVertex] = true;
-    cout << startVertex << " ";
-
-    list<int>::iterator i;
-    for (i = adjLists[startVertex].begin(); i != adjLists[startVertex].end(); ++i)
-    {
-      if (!visited[*i])
-      {
-        visited[*i] = true;
-        DFS_I(*i);
-      }
-    }
-  }
   // dfs iterative
-  void DFS_I(int startVertex)
+  bool DFS_I(int startVertex)
   {
     bool *visited = new bool[numOfVerticies];
     visited[startVertex] = true;
@@ -51,7 +34,7 @@ public:
     {
       int vertex = s.top();
       s.pop();
-      cout << vertex << " ";
+      // cout << vertex << " ";
       for (i = adjLists[vertex].begin(); i != adjLists[vertex].end(); ++i)
       {
         if (!visited[*i])
@@ -59,8 +42,10 @@ public:
           s.push(*i);
           visited[*i] = true;
         }
+        if(*i == startVertex) return true; //! THIS IS THE ONLY LINE TO INCLUDE
       }
     }
+    return false;
   }
 };
 
@@ -81,14 +66,17 @@ int main()
   g.addEdge(0, 1);
   g.addEdge(0, 2);
   g.addEdge(1, 3);
-  g.addEdge(4, 1);
+  g.addEdge(3, 4);
+  // g.addEdge(4, 1);
   g.addEdge(6, 4);
   g.addEdge(5, 6);
   g.addEdge(5, 2);
   g.addEdge(6, 0);
-
-  g.DFS_R(5);
+  bool checker = false;
+  for(int i=0;i<7;i++){
+    checker = checker || g.DFS_I(i);
+  }
   // g.DFS_R(5);
-
+  cout<<checker;
   return 0;
 }
