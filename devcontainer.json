@@ -1,0 +1,13 @@
+{
+  "customizations": {
+    "codespaces": {
+      "repositories": {
+        "my_org/my_repo": {
+          "permissions": {
+            "issues": "write"
+          }
+        }
+      }
+    }
+  }
+}
