@@ -1,9 +1,5 @@
-class Solution(object):
-    def longestConsecutive(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
         ms = set(nums)
         output = 0
         for num in nums:
@@ -14,4 +10,3 @@ class Solution(object):
                 seq += 1
             output = max(seq,output)
         return output
-            
