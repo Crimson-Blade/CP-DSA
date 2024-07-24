@@ -12,7 +12,6 @@ class Solution(object):
             seq = 0
             while (num + seq) in ms:
                 seq += 1
-                if seq > output:
-                    output = seq
+            output = max(seq,output)
         return output
             
