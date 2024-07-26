@@ -1,18 +1,17 @@
 class Solution:
     def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
-        n = len(position)
-        time = [(target - position[i])/speed[i] for i in range(n)]
+        zipped = list(zip(position,speed))
+        pos_time = list(sorted(zipped, key = lambda x:x[0]))
+        stack = []
         
-        
-        comb = list(zip(position,time))
-        sorted_position, ordered_time = zip(*sorted(comb, key = lambda x:x[0]))
-        ordered_time_list = list(ordered_time)
-        
-        maxele  = ordered_time_list[-1]
-        output = 1
-        
-        for num in ordered_time_list[::-1]:
-            if num > maxele:
-                maxele = num
-                output +=1
-        return output
+        for ele in pos_time[::-1]:
+            if not stack:
+                stack.append(ele)
+            elif stack:
+                time1 = (target - ele[0]) / ele[1]
+                time2 = (target - stack[-1][0]) / stack[-1][1]
+                stack.append(ele)
+                if time1 <= time2:
+                    stack.pop()
+                    
+        return len(stack)
