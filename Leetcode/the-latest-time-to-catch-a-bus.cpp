@@ -21,9 +21,9 @@ int main(){
             if(passengers[i] > lastBus) onTimePassengers = i;
         }
         cout<<onTimePassengers;
-        for(int i=onTimePassengers-1; i>=0; i--){
-            if()
-        }
+        // for(int i=onTimePassengers-1; i>=0; i--){
+        //     if()
+        // }
 
     }
 

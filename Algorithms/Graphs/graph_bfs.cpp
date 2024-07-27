@@ -15,7 +15,7 @@ class Graph{
     numOfVectors = n;
     adjLists = new list<int>[n];
     visited = new bool[n];
-  } 
+  }
   void addEdge(int src, int dest){
     adjLists[src].push_front(dest);
     adjLists[dest].push_front(src);
