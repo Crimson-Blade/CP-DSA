@@ -10,7 +10,9 @@ class Solution:
             if dp[i] != -1:
                 return dp[i]
             
-            return f(i-1) + f(i-2)
+            dp[i] = f(i-1) + f(i-2)
+            
+            return dp[i]
         
         return f(n)
         
