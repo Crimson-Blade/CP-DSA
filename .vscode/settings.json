@@ -111,5 +111,6 @@
         "__nullptr": "cpp",
         "__string": "cpp"
     },
-    "C_Cpp.errorSquiggles": "enabled"
+    "C_Cpp.errorSquiggles": "enabled",
+    "python.REPL.enableREPLSmartSend": false
 }
