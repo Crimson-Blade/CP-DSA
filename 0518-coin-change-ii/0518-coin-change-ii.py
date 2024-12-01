@@ -3,25 +3,23 @@ class Solution:
         n = len(coins)
         dp = [[-1 for _ in range(amount+1)] for _ in range(n) ]
         
+        # base 1
+        for i in range(n):
+            dp[i][0] = 1
+        # base 2
+        for k in range(1,amount+1):
+            dp[0][k] = 1 if coins[0] <=k and k % coins[0] == 0 else 0
         
-        def f(i,t):
-            if dp[i][t] != -1:
-                return dp[i][t]
-            # base cases
-            if t==0:
-                return 1
-            if i==0:
-                dp[i][t] = 1 if coins[0] <=t and t % coins[0] == 0 else 0
-                return dp[i][t]
-
-            # recursion
-            not_take = f(i-1,t)
-            take = 0
-            if t>= coins[i]:
-                take = f(i,t-coins[i])
+        #tabulation
+        for i in range(1,n):
+            for j in range(1,amount+1):
+                not_take = dp[i-1][j]
+                take = 0
+                if j>= coins[i]:
+                    take = dp[i][j-coins[i]]
                 
-            dp[i][t] = not_take + take
-            return dp[i][t]
+                dp[i][j] = not_take + take
         
-        return f(len(coins)-1,amount)
+        
+        return dp[n-1][amount]
         
